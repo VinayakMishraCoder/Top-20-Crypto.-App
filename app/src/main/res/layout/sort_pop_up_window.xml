@@ -4,17 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        app:cardCornerRadius="20dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="15dp">
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/materialCardView2"
                 android:layout_width="100dp"
-                android:layout_height="10dp"
+                android:layout_height="7dp"
                 android:layout_marginTop="16dp"
                 android:backgroundTint="@color/dark_grey"
                 app:cardCornerRadius="100dp"
@@ -24,46 +27,130 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/materialTextView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:text="Sort By:"
                 android:textColor="@color/black"
-                android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="@+id/materialCardView2"
                 app:layout_constraintStart_toStartOf="@+id/materialCardView2"
                 app:layout_constraintTop_toBottomOf="@+id/materialCardView2" />
 
-<!--            <com.google.android.material.textview.MaterialTextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Price - Decreasing"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                 />-->
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/price_dec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Price - Decreasing"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:layout_marginTop="13dp"
+                android:clickable="true"
+                app:layout_constraintEnd_toEndOf="@+id/materialTextView8"
+                app:layout_constraintStart_toStartOf="@+id/materialTextView8"
+                app:layout_constraintTop_toBottomOf="@+id/materialTextView8" />
 
-<!--            <com.google.android.material.textview.MaterialTextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Price - Increasing"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                />-->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardView3"
+                android:layout_width="50dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:backgroundTint="@color/dark_grey"
+                app:cardCornerRadius="100dp"
+                app:layout_constraintEnd_toEndOf="@+id/price_dec"
+                app:layout_constraintStart_toStartOf="@+id/price_dec"
+                app:layout_constraintTop_toBottomOf="@+id/price_dec" />
 
-<!--            <com.google.android.material.textview.MaterialTextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Volume 24 Hours - Decreasing"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                 />-->
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/price_inc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Price - Increasing"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:clickable="true"
+                android:layout_marginTop="5dp"
+                app:layout_constraintEnd_toEndOf="@+id/materialCardView3"
+                app:layout_constraintStart_toStartOf="@+id/materialCardView3"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView3" />
 
-<!--            <com.google.android.material.textview.MaterialTextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Volume 24 Hours - Increasing"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                />-->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardView4"
+                android:layout_width="50dp"
+                android:layout_height="2dp"
+                android:backgroundTint="@color/dark_grey"
+                android:layout_marginTop="5dp"
+                app:cardCornerRadius="100dp"
+                app:layout_constraintEnd_toEndOf="@+id/price_inc"
+                app:layout_constraintStart_toStartOf="@+id/price_inc"
+                app:layout_constraintTop_toBottomOf="@+id/price_inc" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/vol_dec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textAlignment="center"
+                android:text="Volume 24 Hours - Decreasing"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:clickable="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView4" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardView5"
+                android:layout_width="50dp"
+                android:layout_height="2dp"
+                android:backgroundTint="@color/dark_grey"
+                app:cardCornerRadius="100dp"
+                android:layout_marginTop="5dp"
+                app:layout_constraintEnd_toEndOf="@+id/vol_dec"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="@+id/vol_dec"
+                app:layout_constraintTop_toBottomOf="@+id/vol_dec" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/vol_inc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:clickable="true"
+                android:textAlignment="center"
+                android:text="Volume 24 Hours - Increasing"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="@+id/materialCardView5"
+                app:layout_constraintStart_toStartOf="@+id/materialCardView5"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView5" />
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardView6"
+                android:layout_width="50dp"
+                android:layout_height="2dp"
+                android:backgroundTint="@color/dark_grey"
+                app:cardCornerRadius="100dp"
+                android:layout_marginTop="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/vol_inc"
+                app:layout_constraintTop_toBottomOf="@+id/vol_inc" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/default_sort_but"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:layout_marginTop="5dp"
+                android:text="Default"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:layout_marginBottom="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/vol_inc"
+                app:layout_constraintStart_toStartOf="@+id/vol_inc"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView6" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

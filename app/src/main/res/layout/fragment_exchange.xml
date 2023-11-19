@@ -20,7 +20,18 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <ProgressBar
+            android:id="@+id/loader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateTint="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/appCompatImageView3"
@@ -109,7 +120,7 @@
             app:layout_constraintTop_toTopOf="@+id/materialTextView4" />
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/materialCardView"
+            android:id="@+id/mainTopCard"
             android:layout_width="match_parent"
             android:layout_height="120dp"
             app:cardCornerRadius="20dp"
@@ -218,7 +229,7 @@
             android:textSize="17sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
+            app:layout_constraintTop_toBottomOf="@+id/mainTopCard" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/view_all_button"
@@ -238,6 +249,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="6dp"
+            android:background="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

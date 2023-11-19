@@ -6,14 +6,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupWindow
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
 import com.example.gweiland_top20crypto.R
 import com.example.gweiland_top20crypto.adapters.MainCryptoAdapter
 import com.example.gweiland_top20crypto.databinding.FragmentExchangeBinding
 import com.example.gweiland_top20crypto.utility.AnimationUtil.uniClick
+import com.example.gweiland_top20crypto.utility.Constants
 import com.example.gweiland_top20crypto.viewmodels.HomeViewModel
+import com.google.android.material.textview.MaterialTextView
 
 class ExchangeFragment : Fragment() {
 
@@ -40,6 +44,15 @@ class ExchangeFragment : Fragment() {
 
         vm.loading.observe(viewLifecycleOwner) {
             // handle loading
+            if(it == true) {
+                binding.mainTopCard.visibility = View.GONE
+                binding.recyclerView.visibility = View.GONE
+                binding.loader.visibility = View.VISIBLE
+            } else {
+                binding.mainTopCard.visibility = View.VISIBLE
+                binding.recyclerView.visibility = View.VISIBLE
+                binding.loader.visibility = View.GONE
+            }
         }
 
         binding.searchQuery.doOnTextChanged { query, _, _, _ ->
@@ -58,20 +71,48 @@ class ExchangeFragment : Fragment() {
 
         binding.sortButton.uniClick(true) {
             // handle sorting the list by volume_24h (asc/desc), price (asc/desc) or default.
-//            val inflater = binding.root.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-//            val view = inflater.inflate(R.layout.filter_popup_window, null) // pass custom layout
-//            val popupWindow = PopupWindow(view, 500, ConstraintLayout.LayoutParams.WRAP_CONTENT, true)
-//            popupWindow.elevation = 40.0f
-//            view.findViewById<CardView>(R.id.under24Filter).setOnClickListener {
-//                viewModel.setFilter(UNDER_24_FILTER)
-//            }
-//            view.findViewById<CardView>(R.id.before24Filter).setOnClickListener {
-//                viewModel.setFilter(LATER_CONTESTS_FILTER)
-//            }
-//            view.findViewById<CardView>(R.id.allFilter).setOnClickListener {
-//                viewModel.setFilter(ALL_CONTESTS_FILTER)
-//            }
-//            popupWindow.showAsDropDown(binding.sortButton) // view to attach with
+            val inflater = binding.root.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            val view = inflater.inflate(R.layout.sort_pop_up_window, null) // pass custom layout
+            val popupWindow = PopupWindow(view, 600, ConstraintLayout.LayoutParams.WRAP_CONTENT, true)
+            popupWindow.elevation = 40.0f
+
+            view.findViewById<MaterialTextView>(R.id.price_dec).uniClick (true) {
+                vm.currSortingCriteria = Constants.SORT_CRITERIA_PRICE
+                vm.currSortingDirection = Constants.DESCENDING
+                vm.getCryptoData {
+                    Toast.makeText(context, it.toString(), Toast.LENGTH_SHORT).show()
+                }
+            }
+            view.findViewById<MaterialTextView>(R.id.price_inc).uniClick (true) {
+                vm.currSortingCriteria = Constants.SORT_CRITERIA_PRICE
+                vm.currSortingDirection = Constants.ASCENDING
+                vm.getCryptoData {
+                    Toast.makeText(context, it.toString(), Toast.LENGTH_SHORT).show()
+                }
+            }
+            view.findViewById<MaterialTextView>(R.id.vol_dec).uniClick (true) {
+                vm.currSortingCriteria = Constants.SORT_CRITERIA_24H
+                vm.currSortingDirection = Constants.DESCENDING
+                vm.getCryptoData {
+                    Toast.makeText(context, it.toString(), Toast.LENGTH_SHORT).show()
+                }
+            }
+            view.findViewById<MaterialTextView>(R.id.vol_inc).uniClick (true) {
+                vm.currSortingCriteria = Constants.SORT_CRITERIA_24H
+                vm.currSortingDirection = Constants.ASCENDING
+                vm.getCryptoData {
+                    Toast.makeText(context, it.toString(), Toast.LENGTH_SHORT).show()
+                }
+            }
+            view.findViewById<MaterialTextView>(R.id.default_sort_but).uniClick (true) {
+                vm.currSortingCriteria = Constants.SORT_CRITERIA_DEFAULT_MARKET_CAP
+                vm.currSortingDirection = Constants.DESCENDING
+                vm.getCryptoData {
+                    Toast.makeText(context, it.toString(), Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            popupWindow.showAsDropDown(binding.sortButton) // view to attach with
         }
 
         vm.getCryptoData({} , {

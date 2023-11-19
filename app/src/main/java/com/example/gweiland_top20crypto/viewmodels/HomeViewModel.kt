@@ -34,7 +34,6 @@ class HomeViewModel: ViewModel() {
                  * Above error handling is for both the API calls.
                  * */
                 var listingsResponse = repository.getListings(currSortingCriteria, currSortingDirection)
-                loading.value = false
                 if(listingsResponse.status?.errorCode == null || listingsResponse.status?.errorCode == 0) {
 
                     var idsForInfo = ""
@@ -69,9 +68,11 @@ class HomeViewModel: ViewModel() {
                     }
                     newCryptoData.value = listingsResponse.responseData
                 } else {
+                    loading.value = false
                     onFailure?.invoke(listingsResponse.status?.errorMessage)
                     return@launch
                 }
+                loading.value = false
                 onSuccess?.invoke()
             } catch (e: Exception) {
                 loading.value = false

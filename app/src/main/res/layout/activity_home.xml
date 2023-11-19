@@ -6,7 +6,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/container"
@@ -39,21 +40,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:menu="@menu/main_nav_bottom_menu" >
-        </com.google.android.material.bottomnavigation.BottomNavigationView>
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/main_meta_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="80dp"
-            android:layout_gravity="center"
-            android:paddingBottom="22dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/metaverseimage"
-            android:translationZ="10dp"
-            app:layout_constraintBottom_toBottomOf="@+id/bottomNav"
-            app:layout_constraintEnd_toEndOf="@+id/bottomNav"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/bottomNav" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/main_meta_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:src="@drawable/metaverselogo_new"
+                android:translationZ="10dp" />
+
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
