@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/shopFragment"
+        android:icon="@drawable/baseline_emoji_emotions_24"
+        android:enabled="true"
+        android:title="€-$ Shop" />
+    <item
+        android:id="@+id/exchangeFragment"
+        android:icon="@drawable/exchange_icon"
+        android:enabled="true"
+        android:title="Exchange" />
+    <item
+        android:id="@+id/placeholder"
+        android:enabled="true"
+        android:title=" "/>
+    <item
+        android:id="@+id/launchPadFragment"
+        android:icon="@drawable/launchpads_icon"
+        android:enabled="true"
+        android:title="Launchpads" />
+    <item
+        android:id="@+id/walletFragment"
+        android:icon="@drawable/wallet_icon"
+        android:enabled="true"
+        android:title="Wallet" />
+</menu>

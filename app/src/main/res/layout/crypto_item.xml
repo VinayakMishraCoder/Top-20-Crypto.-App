@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="currListing"
+            type="com.example.gweiland_top20crypto.datamodels.ListingItem" />
+        <variable
+            name="currQuote"
+            type="com.example.gweiland_top20crypto.datamodels.QuoteItem" />
+        <variable
+            name="price"
+            type="String" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        app:cardCornerRadius="15dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/appCompatImageView"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginVertical="10dp"
+                android:layout_marginStart="15dp"
+                app:imageUrl="@{currListing.cryptoInfoItem.logo}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/baseline_emoji_emotions_24" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/materialTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="6dp"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/inter_medium"
+                android:text="@{currListing.symbol}"
+                app:layout_constraintStart_toEndOf="@+id/appCompatImageView"
+                app:layout_constraintTop_toTopOf="@+id/appCompatImageView"
+                tools:text="ETH" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/materialTextView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:textColor="@color/grey"
+                android:textSize="13sp"
+                android:text="@{currListing.name}"
+                android:fontFamily="@font/inter_medium"
+                app:layout_constraintStart_toStartOf="@+id/materialTextView"
+                app:layout_constraintTop_toBottomOf="@+id/materialTextView"
+                tools:text="Etherium" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/appCompatImageView2"
+                android:layout_width="80dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="10dp"
+                android:tint="@{((currQuote.percent_change_24h&lt;0) ? @color/red :@color/green)}"
+                app:layout_constraintStart_toEndOf="@+id/materialTextView"
+                app:layout_constraintTop_toTopOf="@+id/appCompatImageView"
+                android:src="@drawable/slimwavevector"
+                tools:tint="@color/green" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/materialTextView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:fontFamily="@font/inter_medium"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:text="@{`$` + price + ` USD`}"
+                app:layout_constraintBottom_toBottomOf="@+id/materialTextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/materialTextView"
+                tools:text="$ 3,800" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:textColor="@color/green"
+                android:fontFamily="@font/inter_medium"
+                android:textSize="12sp"
+                android:textColor="@{((currQuote.percent_change_24h &lt; 0) ? @color/red :@color/green)}"
+                android:text="@{currQuote.percent_change_24h.toString()}"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/materialTextView3"
+                app:layout_constraintTop_toBottomOf="@+id/materialTextView3"
+                tools:text="-3.2%" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

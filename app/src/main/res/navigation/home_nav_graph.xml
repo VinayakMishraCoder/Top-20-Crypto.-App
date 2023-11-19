@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_nav_graph"
+    app:startDestination="@id/exchangeFragment">
+
+    <fragment
+        android:id="@+id/exchangeFragment"
+        android:name="com.example.gweiland_top20crypto.fragments.ExchangeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_exchange" />
+    <fragment
+        android:id="@+id/launchPadFragment"
+        android:name="com.example.gweiland_top20crypto.fragments.LaunchPadFragment"
+        android:label="fragment_launch_pad"
+        tools:layout="@layout/fragment_launch_pad" />
+    <fragment
+        android:id="@+id/walletFragment"
+        android:name="com.example.gweiland_top20crypto.fragments.WalletFragment"
+        android:label="fragment_wallet"
+        tools:layout="@layout/fragment_wallet" />
+    <fragment
+        android:id="@+id/shopFragment"
+        android:name="com.example.gweiland_top20crypto.fragments.ShopFragment"
+        android:label="fragment_shop"
+        tools:layout="@layout/fragment_shop" />
+
+    <fragment android:id="@+id/placeholder" />
+
+</navigation>
