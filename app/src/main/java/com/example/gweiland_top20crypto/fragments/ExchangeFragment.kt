@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.gweiland_top20crypto.R
 import com.example.gweiland_top20crypto.adapters.MainCryptoAdapter
 import com.example.gweiland_top20crypto.databinding.FragmentExchangeBinding
+import com.example.gweiland_top20crypto.datamodels.ListingItem
 import com.example.gweiland_top20crypto.utility.AnimationUtil.uniClick
 import com.example.gweiland_top20crypto.utility.Constants
 import com.example.gweiland_top20crypto.viewmodels.HomeViewModel
@@ -57,6 +58,19 @@ class ExchangeFragment : Fragment() {
 
         binding.searchQuery.doOnTextChanged { query, _, _, _ ->
             // handle searching
+            val required = ArrayList<ListingItem>()
+            if(query.isNullOrEmpty()) {
+                adapter.setUpRecyclerView(vm.newCryptoData.value)
+            } else {
+                vm.newCryptoData.value?.let {
+                    for(item in it) {
+                        if(item.name?.contains(query)==true || item.slug?.contains(query)==true) {
+                            required.add(item)
+                        }
+                    }
+                }
+                if(!required.isNullOrEmpty()) adapter.setUpRecyclerView(required)
+            }
         }
 
         vm.newCryptoData.observe(viewLifecycleOwner) {
